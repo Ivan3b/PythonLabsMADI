@@ -9,7 +9,7 @@ def adding_new_book(temp_deque = deque()):
         try:
             choose = int(input("Choose place: "))
             break
-        except(TypeError):
+        except(ValueError):
             print("You need to write a number!")
     if choose == 1:
         temp_deque.appendleft(new_book)
@@ -56,14 +56,17 @@ else:
     for line in lines:
         temp_deque.append(line.strip())
         choose = 0
-    while choose < 1 and choose > 6:
+    while choose!=6:
         print("""1) добавить элемент в дек
 2) удалить элемент из дека
 3) отсортировать дек
 4) показать дек
 5) записать дек в файл
 6) выйти""")
-        choose = int(input(''))
+        try:
+            choose = int(input(''))
+        except(ValueError):
+            print("You need to write a number!")
         match(choose):
             
             case 1:
@@ -73,7 +76,7 @@ else:
                 temp_deque = deleting_deque_element(temp_deque)
             
             case 3:
-                sorted_books = sorting_deque(temp_deque)
+                temp_deque = sorting_deque(temp_deque)
             
             case 4:
                 print(temp_deque)
@@ -85,4 +88,6 @@ else:
                             f.write(book + '\n')
             case 6:
                 print('exit')
-        
+  
+            case _:
+                print('No such part of menu')
