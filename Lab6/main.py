@@ -91,3 +91,5 @@ else:
   
             case _:
                 print('No such part of menu')
+
+print("end")
