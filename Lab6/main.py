@@ -2,7 +2,7 @@ import os
 from collections import deque    
 
 def adding_new_book(temp_deque = deque()):
-    new_book = input(str('Which book you want to add?'))
+    new_book = input(str('Which book you want to add?\n'))
     print('In which place you want to add it\n 1) Begin of deque \t 2) End of deque')
     choose = int(0)
     while choose != 1 and choose != 2:
@@ -24,6 +24,7 @@ def sorting_deque(temp_deque = deque()):
 
         while temp_deque:
             sorted_books.append(temp_deque.popleft())
+        print('Books are sorted')
         return sorted_books
 
 def deleting_deque_element(temp_deque = deque()):
@@ -41,6 +42,16 @@ def deleting_deque_element(temp_deque = deque()):
         temp_deque.pop()    
     
     return(temp_deque)
+
+def adding_to_file(sorted_books):
+    if not sorted_books:
+        print("Books are not sorted")
+    else:
+        file_name = os.getcwd() + '\\sorted_books.txt'
+        with open(file_name, 'w+',encoding="utf-8") as f:
+            for book in sorted_books:
+                f.write(book + '\n')
+        print("Books are added")
     
 list_of_books = []
 file_name = os.getcwd() 
@@ -76,16 +87,12 @@ else:
                 temp_deque = deleting_deque_element(temp_deque)
             
             case 3:
-                temp_deque = sorting_deque(temp_deque)
+                sorted_books = sorting_deque(temp_deque)
             
             case 4:
                 print(temp_deque)
             case 5:
-                file_name = os.getcwd() + '\\sorted_books.txt'
-                with open(file_name, 'w',encoding="utf-8") as f:
-                    for book in sorted_books:
-                            print(book)
-                            f.write(book + '\n')
+                adding_to_file(sorted_books)
             case 6:
                 print('exit')
   
