@@ -1,4 +1,14 @@
-name: зщшгне
+name: abi
+age: 1
+color: green
+breed: no
+
+name: di
+age: 3
+color: british
+breed: british
+
+name: Р·С‰С€РіРЅРµ
 age: 123
 color: asd
 breed: zxc
